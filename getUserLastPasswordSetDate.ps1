@@ -1,0 +1,1 @@
+Get-MgUser -ConsistencyLevel eventual -Property DisplayName, UserPrincipalName, LastPasswordChangeDateTime, UserType, AccountEnabled -All | Where-Object { $_.AccountEnabled -eq $True -and $_.UserType -eq "Member"  -and $_.UserPrincipalName -eq 'MyUPN@domain.com'} | Select-Object DisplayName,UserPrincipalName,LastPasswordChangeDateTime | Export-Csv .\usersLastPasswordDate.csv
